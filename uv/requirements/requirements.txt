@@ -1,0 +1,12 @@
+# Direct access to Chainguard Libraries for Python with uv and a
+# requirements.txt project. Unlike the pip example, the indexes are NOT declared
+# here with --index-url / --extra-index-url. They come from the UV_DEFAULT_INDEX,
+# UV_INDEX, and UV_INDEX_STRATEGY environment variables set in demo.sh, which is
+# the idiomatic way to configure uv in CI without editing the requirements file.
+# Credentials come from .netrc, which demo.sh writes from the pull-token
+# environment variables. See ../../tools/README.md.
+
+# Pinned upstream versions; the remediated context serves the matching
+# *+cgr.N builds, which satisfy these specifiers and are preferred.
+flask==2.0.0
+werkzeug==3.0.2
