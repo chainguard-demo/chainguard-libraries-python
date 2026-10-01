@@ -44,6 +44,16 @@ the script again. Each run recreates the `.venv` and `uv.lock` from scratch, so
 you always start clean — a fast loop for confirming that any given dependency
 resolves through Chainguard Libraries.
 
+## requirements.txt projects
+
+The [`requirements`](requirements/README.md) subfolder covers projects that keep
+their dependencies in a `requirements.txt` and install with
+`uv pip install -r requirements.txt` instead of a `pyproject.toml` and
+`uv sync`. It supplies the indexes through environment variables
+(`UV_DEFAULT_INDEX`, `UV_INDEX`, `UV_INDEX_STRATEGY`), so you can point an
+existing requirements-based build at Chainguard Libraries without editing the
+requirements file.
+
 ## CVE remediation demo
 
 The [`cve-remediation`](cve-remediation/README.md) subfolder builds on this same

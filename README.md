@@ -18,7 +18,7 @@ faithful template for a real project.
 |---|---|
 | [`tools`](tools/README.md) | Shared access setup — `chainctl` commands and authentication, the same for every package manager |
 | [`pip`](pip/README.md) | pip — `requirements.txt` with direct-access indexes |
-| [`uv`](uv/README.md) | uv — `pyproject.toml` with `[[tool.uv.index]]` entries, plus a [CVE remediation demo](uv/cve-remediation/README.md) that scans with Grype |
+| [`uv`](uv/README.md) | uv — `pyproject.toml` with `[[tool.uv.index]]` entries, plus a [`requirements.txt` variant](uv/requirements/README.md) and a [CVE remediation demo](uv/cve-remediation/README.md) that scans with Grype |
 | [`poetry`](poetry/README.md) | Poetry — `pyproject.toml` sources, including the required PyPI fallback |
 
 ## Prerequisites
