@@ -1,7 +1,8 @@
 # Example commands for Chainguard Libraries access
 
 These `chainctl` commands set up and manage access to Chainguard Libraries for
-Python. They are the same across package managers.
+Python. They are the same across package managers. The verify command also
+checks local artifacts and saves their SBOMs and attestations.
 
 List entitlements:
 
@@ -67,3 +68,38 @@ List policy bindings to ecosystems:
 ```shell
 chainctl libraries policy bindings list
 ```
+
+## Verify artifacts and download attestations
+
+`chainctl libraries verify` reports which packages were built from source by
+Chainguard. It uses your `chainctl auth login` session rather than the pull-token
+environment variables used by the package managers.
+
+Verify a downloaded wheel and save its available companions:
+
+```shell
+chainctl libraries verify flask-3.0.1-py3-none-any.whl \
+  --output-attestations --output-dir attestations
+```
+
+For this wheel, files are saved under `attestations/flask/3.0.1/`:
+
+- `flask-3.0.1-py3-none-any.whl.signature-bundle.json` — the exact Sigstore
+  bundle used to verify the wheel.
+- `flask-3.0.1-py3-none-any.whl.pep740-attestation.json` — PEP 740 provenance,
+  independently verified for its signature, Chainguard Python signer identity
+  and issuer, and wheel digest before saving it as trusted.
+- `flask-3.0.1-py3-none-any.whl.sbom.spdx.json` — the SPDX SBOM extracted from
+  the verified wheel.
+
+Only verified Chainguard builds produce companion files, and files are saved
+when available. The directory uses the normalized package name and version;
+the full wheel file name distinguishes different platform and Python builds.
+Remediated wheels with a `+cgr` version suffix also support downloads.
+
+Downloads require wheel files. Installed virtual environments and source
+distributions do not produce companions. Legacy signature bundles served from
+the provenance endpoint do not produce a PEP 740 file.
+
+See the [Chainguard Academy verification guide](https://edu.chainguard.dev/chainguard/libraries/policies-and-security/verification/#download-python-sboms-and-attestations)
+for more details.

@@ -13,7 +13,7 @@ sources, `.netrc`, and so on — lives with each package manager's own example.
 
 | Resource | Purpose |
 |---|---|
-| [`access-examples.md`](access-examples.md) | `chainctl` command examples — entitlements, pull tokens, and policies. Start here to set up credentials. |
+| [`access-examples.md`](access-examples.md) | `chainctl` command examples — entitlements, pull tokens, policies, and artifact verification. Start here to set up credentials. |
 
 ## Authentication
 
@@ -28,6 +28,25 @@ This sets `CHAINGUARD_PYTHON_IDENTITY_ID` and `CHAINGUARD_PYTHON_TOKEN`, which
 the per-tool index configuration reads. See
 [`access-examples.md`](access-examples.md) for the full set of `chainctl`
 commands, including entitlements, organization-scoped tokens, and policies.
+
+## Verify artifacts
+
+Verify a downloaded wheel and save available SBOMs and attestations with
+`chainctl libraries verify`:
+
+```bash
+chainctl libraries verify flask-3.0.1-py3-none-any.whl \
+  --output-attestations --output-dir attestations
+```
+
+Verification uses your `chainctl auth login` session rather than the pull-token
+environment variables. Files for this verified Chainguard build are saved under
+`attestations/flask/3.0.1/`. The `attestations/` directory is git-ignored.
+Downloads require the wheel file; verifying an installed virtual environment
+does not save companions.
+
+For file names and trust details, see
+[Verify artifacts and download attestations](access-examples.md#verify-artifacts-and-download-attestations).
 
 ## Indexes
 

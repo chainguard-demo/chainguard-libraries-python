@@ -5,6 +5,9 @@ __pycache__/
 dist/
 build/
 
+# Downloaded SBOMs and attestations
+attestations/
+
 # Virtual environments
 .venv/
 venv/
