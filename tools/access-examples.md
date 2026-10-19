@@ -78,8 +78,7 @@ environment variables used by the package managers.
 Verify a downloaded wheel and save its available companions:
 
 ```shell
-chainctl libraries verify flask-3.0.1-py3-none-any.whl \
-  --output-attestations --output-dir attestations
+chainctl libraries verify flask-3.0.1-py3-none-any.whl --output-attestations
 ```
 
 For this wheel, files are saved under `attestations/flask/3.0.1/`:

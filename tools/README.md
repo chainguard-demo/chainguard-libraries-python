@@ -35,8 +35,7 @@ Verify a downloaded wheel and save available SBOMs and attestations with
 `chainctl libraries verify`:
 
 ```bash
-chainctl libraries verify flask-3.0.1-py3-none-any.whl \
-  --output-attestations --output-dir attestations
+chainctl libraries verify flask-3.0.1-py3-none-any.whl --output-attestations
 ```
 
 Verification uses your `chainctl auth login` session rather than the pull-token
