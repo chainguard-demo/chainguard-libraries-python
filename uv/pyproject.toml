@@ -5,7 +5,7 @@ description = "uv example for Chainguard Libraries for Python"
 requires-python = ">=3.11"
 dependencies = [
     "flask==2.0.0",
-    "werkzeug==3.0.2",
+    "werkzeug==3.1.9",
 ]
 
 [tool.uv]

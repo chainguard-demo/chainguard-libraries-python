@@ -9,4 +9,4 @@
 # Pinned upstream versions; the remediated context serves the matching
 # *+cgr.N builds, which satisfy these specifiers and are preferred.
 flask==2.0.0
-werkzeug==3.0.2
+werkzeug==3.1.9
